@@ -21,12 +21,12 @@ The goal of this project is to:
 The same solutions implemented in other languages:
 
 - [Solutions in C++](https://github.com/zellenon/leetcode-cpp)
-- [Solutions in Erlang](https://github.com/zellenon/leetcode-cpp)
+- [Solutions in Erlang](https://github.com/zellenon/leetcode-erlang)
 - [Solutions in Go](https://github.com/zellenon/leetcode-go)
 - [Solutions in Java](https://github.com/zellenon/leetcode-java)
-- [Solutions in Kotlin](https://github.com/zellenon/leetcode-java)
+- [Solutions in Kotlin](https://github.com/zellenon/leetcode-kotlin)
 - [Solutions in Python](https://github.com/zellenon/leetcode-python)
-- [Solutions in Ruby](https://github.com/zellenon/leetcode-python)
-- [Solutions in Rust](https://github.com/zellenon/leetcode-python)
-- [Solutions in Swift](https://github.com/zellenon/leetcode-python)
-- [Solutions in Typescript](https://github.com/zellenon/leetcode-python)
+- [Solutions in Ruby](https://github.com/zellenon/leetcode-ruby)
+- [Solutions in Rust](https://github.com/zellenon/leetcode-rust)
+- [Solutions in Swift](https://github.com/zellenon/leetcode-swift)
+- [Solutions in Typescript](https://github.com/zellenon/leetcode-typescript)
