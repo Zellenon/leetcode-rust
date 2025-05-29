@@ -1,5 +1,5 @@
-//Solution passes all tests with 0ms runtime (meets or beats 100% of competitors) and 2.37MB memory
-//(meets or beats 11.32% of competitors)
+//Solution passes all tests with 0ms runtime (meets or beats 100% of competitors) and 2.27MB memory
+//(meets or beats 59.67% of competitors)
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -49,23 +49,16 @@ impl Solution {
                     next: Solution::add_two_numbers_and_carry(l1.next, l2.next, val > 9),
                 }))
             }
-            (Some(l1), None) => {
+            (Some(l1), None) | (None, Some(l1)) => {
                 let val = l1.val + if carry { 1 } else { 0 };
                 Some(Box::new(ListNode {
                     val: val % 10,
                     next: Solution::add_two_numbers_and_carry(l1.next, None, val > 9),
                 }))
             }
-            (None, Some(l2)) => {
-                let val = l2.val + if carry { 1 } else { 0 };
-                Some(Box::new(ListNode {
-                    val: val % 10,
-                    next: Solution::add_two_numbers_and_carry(None, l2.next, val > 9),
-                }))
-            }
             (None, None) => {
                 if carry {
-                    Some(new_node(1))
+                    Some(Box::new(ListNode::new(1)))
                 } else {
                     None
                 }
