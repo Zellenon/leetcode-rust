@@ -1,3 +1,6 @@
+//Solution passes all tests with 0ms runtime (meets or beats 100% of competitors) and 2.37MB memory
+//(meets or beats 11.32% of competitors)
+
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
@@ -38,20 +41,35 @@ impl Solution {
         l2: Option<Box<ListNode>>,
         carry: bool,
     ) -> Option<Box<ListNode>> {
-        if !carry && l1.is_none() && l2.is_none() {
-            None
-        } else {
-            let val = l1.map(|w| w.val).unwrap_or(0)
-                + l2.map(|w| w.val).unwrap_or(0)
-                + (if carry { 1 } else { 0 });
-            Some(Box::new(ListNode {
-                val: val % 10,
-                next: Solution::add_two_numbers_and_carry(
-                    l1.map(|w| w.next).flatten(),
-                    l2.map(|w| w.next).flatten(),
-                    val > 9,
-                ),
-            }))
+        match (l1, l2) {
+            (Some(l1), Some(l2)) => {
+                let val = l1.val + l2.val + if carry { 1 } else { 0 };
+                Some(Box::new(ListNode {
+                    val: val % 10,
+                    next: Solution::add_two_numbers_and_carry(l1.next, l2.next, val > 9),
+                }))
+            }
+            (Some(l1), None) => {
+                let val = l1.val + if carry { 1 } else { 0 };
+                Some(Box::new(ListNode {
+                    val: val % 10,
+                    next: Solution::add_two_numbers_and_carry(l1.next, None, val > 9),
+                }))
+            }
+            (None, Some(l2)) => {
+                let val = l2.val + if carry { 1 } else { 0 };
+                Some(Box::new(ListNode {
+                    val: val % 10,
+                    next: Solution::add_two_numbers_and_carry(None, l2.next, val > 9),
+                }))
+            }
+            (None, None) => {
+                if carry {
+                    Some(new_node(1))
+                } else {
+                    None
+                }
+            }
         }
     }
 }
